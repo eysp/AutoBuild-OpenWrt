@@ -6,6 +6,7 @@
 # Youtube Channel: https://goo.gl/fvkdwm 
 #=================================================
 #1. Modify default IP
+cd openwrt
 git clone https://github.com/garypang13/openwrt-packages.git package/openwrt-packages
 rm -Rf packages/openwrt-packages/default-settings
 rm -Rf packages/openwrt-packages/luci-app-adguardhome
@@ -40,3 +41,4 @@ rm -rf ./feeds/packages/lang/golang
 svn co https://github.com/immortalwrt/packages/trunk/lang/golang feeds/packages/lang/golang
 
 ./scripts/feeds update -a && ./scripts/feeds install -a
+cd ../
