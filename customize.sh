@@ -8,16 +8,16 @@
 #1. Modify default IP
 cd openwrt
 git clone https://github.com/garypang13/openwrt-packages.git package/openwrt-packages
-rm -Rf packages/openwrt-packages/default-settings
-rm -Rf packages/openwrt-packages/luci-app-adguardhome
-rm -Rf packages/openwrt-packages/luci-app-openclash
+rm -Rf package/openwrt-packages/default-settings
+rm -Rf package/openwrt-packages/luci-app-adguardhome
+rm -Rf package/openwrt-packages/luci-app-openclash
 git clone https://github.com/eysp/default-settings package/default-settings
-git clone https://github.com/lloyd18/luci-app-npc packages/openwrt-packages/luci-app-npc
-git clone https://github.com/rufengsuixing/luci-app-adguardhome packages/openwrt-packages/luci-app-adguardhome
+git clone https://github.com/lloyd18/luci-app-npc package/openwrt-packages/luci-app-npc
+git clone https://github.com/rufengsuixing/luci-app-adguardhome package/openwrt-packages/luci-app-adguardhome
 
 ./scripts/feeds update -a && ./scripts/feeds install -a
 
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash packages/openwrt-packages/luci-app-openclash
+svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openwrt-packages/luci-app-openclash
 svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-19.07/package/lean/ipv6-helper package/ipv6-helper
 #svn co https://github.com/garypang13/openwrt-packages/trunk/luci-app-turboacc package/ysp/luci-app-turboacc
 svn co https://github.com/immortalwrt/packages/trunk/lang/python/Flask-RESTful feeds/packages/lang/python/Flask-RESTful
