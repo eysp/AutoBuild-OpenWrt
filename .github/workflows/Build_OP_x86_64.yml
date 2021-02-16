@@ -96,11 +96,11 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: Build firmware
+    - name: Build firmware -j$(nproc)
       working-directory: ./openwrt
       run: |
         echo -e "$(nproc) thread build."
-        make -j$(nproc) V=s
+        make V=s
 
     - name : Upload artifact
       uses: actions/upload-artifact@master
