@@ -19,7 +19,7 @@ git clone https://github.com/rufengsuixing/luci-app-adguardhome packages/openwrt
 
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash packages/openwrt-packages/luci-app-openclash
 svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-19.07/package/lean/ipv6-helper package/ipv6-helper
-svn co https://github.com/garypang13/openwrt-packages/trunk/luci-app-turboacc package/ysp/luci-app-turboacc
+#svn co https://github.com/garypang13/openwrt-packages/trunk/luci-app-turboacc package/ysp/luci-app-turboacc
 svn co https://github.com/immortalwrt/packages/trunk/lang/python/Flask-RESTful feeds/packages/lang/python/Flask-RESTful
 svn co https://github.com/immortalwrt/packages/trunk/lang/node-yarn feeds/packages/lang/node-yarn
 svn co https://github.com/immortalwrt/packages/trunk/net/kcptun feeds/packages/net/kcptun
