@@ -11,6 +11,8 @@ git clone https://github.com/garypang13/openwrt-packages.git package/openwrt-pac
 rm -Rf package/openwrt-packages/default-settings
 rm -Rf package/openwrt-packages/luci-app-adguardhome
 rm -Rf package/openwrt-packages/luci-app-openclash
+rm -rf package/openwrt-packages/compressed-memory
+rm -rf package/openwrt-packages/bpytop
 git clone https://github.com/eysp/default-settings package/default-settings
 git clone https://github.com/lloyd18/luci-app-npc package/openwrt-packages/luci-app-npc
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/openwrt-packages/luci-app-adguardhome
