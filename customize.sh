@@ -32,7 +32,8 @@ svn co https://github.com/immortalwrt/packages/trunk/utils/runc feeds/packages/u
 svn co https://github.com/immortalwrt/packages/trunk/utils/tini feeds/packages/utils/tini
 rm -Rf tools/upx && svn co https://github.com/coolsnowwolf/lede/trunk/tools/upx tools/upx
 rm -Rf tools/ucl && svn co https://github.com/coolsnowwolf/lede/trunk/tools/ucl tools/ucl
-sed -i 's?zstd$?zstd ucl upx\n$(curdir)/upx/compile := $(curdir)/ucl/compile?g' tools/Makefile
+#sed -i 's?zstd$?zstd ucl upx\n$(curdir)/upx/compile := $(curdir)/ucl/compile?g' tools/Makefile
+sed -i 's/zip/zip upx ucl/g' tools/Makefile
 
 # find target/linux/x86 -name "config*" -exec bash -c 'cat kernel.conf >> "{}"' \;
 
