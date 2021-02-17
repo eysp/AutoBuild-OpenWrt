@@ -7,14 +7,15 @@
 #=================================================
 #1. Modify default IP
 sed -i 's/192.168.1.1/192.168.123.1/g' openwrt/package/base-files/files/bin/config_generate
-#2.luci setting
+#2.luci settings
 cd openwrt
 git clone https://github.com/garypang13/openwrt-packages.git package/openwrt-packages
 rm -Rf package/openwrt-packages/default-settings
 rm -Rf package/openwrt-packages/luci-app-adguardhome
 rm -Rf package/openwrt-packages/luci-app-openclash
-rm -rf package/openwrt-packages/compressed-memory
-rm -rf package/openwrt-packages/bpytop
+rm -Rf package/openwrt-packages/compressed-memory
+rm -Rf package/openwrt-packages/luci-app-compressed-memory
+rm -Rf package/openwrt-packages/luci-app-qosv4
 git clone https://github.com/eysp/default-settings package/default-settings
 git clone https://github.com/lloyd18/luci-app-npc package/openwrt-packages/luci-app-npc
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/openwrt-packages/luci-app-adguardhome
