@@ -19,7 +19,7 @@ rm -Rf package/openwrt-packages/luci-app-qosv4
 git clone https://github.com/eysp/default-settings package/default-settings
 git clone https://github.com/lloyd18/luci-app-npc package/openwrt-packages/luci-app-npc
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/openwrt-packages/luci-app-adguardhome
-svn co https://github.com/liuran001/openwrt-packages/trunk/packages/wrtbwmon package/openwrt-packages/wrtbwmon
+svn co https://github.com/liuran001/openwrt-packages/trunk/wrtbwmon package/openwrt-packages/wrtbwmon
 
 ./scripts/feeds update -a && ./scripts/feeds install -a
 
