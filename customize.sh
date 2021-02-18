@@ -9,7 +9,7 @@
 sed -i 's/192.168.1.1/192.168.123.1/g' openwrt/package/base-files/files/bin/config_generate
 #2.luci settings
 cd openwrt
-sed -i '/wrt350nv2-builder upslug2/a\tools-y += ucl upx' tools/Makefile
+#sed -i '/wrt350nv2-builder upslug2/a\tools-y += ucl upx' tools/Makefile
 git clone https://github.com/garypang13/openwrt-packages.git package/openwrt-packages
 rm -Rf package/openwrt-packages/default-settings
 rm -Rf package/openwrt-packages/luci-app-adguardhome
