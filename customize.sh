@@ -36,12 +36,13 @@ svn co https://github.com/immortalwrt/packages/trunk/utils/dockerd feeds/package
 svn co https://github.com/immortalwrt/packages/trunk/utils/libnetwork feeds/packages/utils/libnetwork
 svn co https://github.com/immortalwrt/packages/trunk/utils/runc feeds/packages/utils/runc
 svn co https://github.com/immortalwrt/packages/trunk/utils/tini feeds/packages/utils/tini
-svn co https://github.com/immortalwrt/immortalwrt/trunk/tools/upx tools/upx
-svn co https://github.com/immortalwrt/immortalwrt/trunk/tools/ucl tools/ucl
+svn co https://github.com/lienol/openwrt/trunk/tools/upx tools/upx
+svn co https://github.com/lienol/openwrt/trunk/tools/ucl tools/ucl
 #rm -Rf tools/upx && svn co https://github.com/coolsnowwolf/lede/trunk/tools/upx tools/upx
 #rm -Rf tools/ucl && svn co https://github.com/coolsnowwolf/lede/trunk/tools/ucl tools/ucl
 #sed -i 's?zstd$?zstd ucl upx\n$(curdir)/upx/compile := $(curdir)/ucl/compile?g' tools/Makefile
-sed -i '/wrt350nv2-builder upslug2/a\tools-y += ucl upx' tools/Makefile
+#sed -i '/wrt350nv2-builder upslug2/a\tools-y += ucl upx' tools/Makefile
+rm tools/Makefile && cd tools && wget -O https://raw.githubusercontent.com/Lienol/openwrt/19.07/tools/Makefile && cd ../
 
 # find target/linux/x86 -name "config*" -exec bash -c 'cat kernel.conf >> "{}"' \;
 
