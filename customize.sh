@@ -41,7 +41,7 @@ rm -Rf tools/ucl && svn co https://github.com/Lienol/openwrt/trunk/tools/ucl too
 #rm -Rf tools/upx && svn co https://github.com/coolsnowwolf/lede/trunk/tools/upx tools/upx
 #rm -Rf tools/ucl && svn co https://github.com/coolsnowwolf/lede/trunk/tools/ucl tools/ucl
 #sed -i 's?zstd$?zstd ucl upx\n$(curdir)/upx/compile := $(curdir)/ucl/compile?g' tools/Makefile
-sed -i '/dosfstools libressl/a\tools-y += ucl upx' tools/Makefil
+sed -i '/dosfstools libressl/a\tools-y += ucl upx' tools/Makefile
 
 # find target/linux/x86 -name "config*" -exec bash -c 'cat kernel.conf >> "{}"' \;
 
