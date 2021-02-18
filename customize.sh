@@ -42,7 +42,7 @@ svn co https://github.com/lienol/openwrt/trunk/tools/ucl tools/ucl
 #rm -Rf tools/upx && svn co https://github.com/coolsnowwolf/lede/trunk/tools/upx tools/upx
 #rm -Rf tools/ucl && svn co https://github.com/coolsnowwolf/lede/trunk/tools/ucl tools/ucl
 #sed -i 's?zstd$?zstd ucl upx\n$(curdir)/upx/compile := $(curdir)/ucl/compile?g' tools/Makefile
-#rm tools/Makefile && wget -P tools https://raw.githubusercontent.com/Lienol/openwrt/19.07/tools/Makefile
+rm tools/Makefile && wget -P tools https://raw.githubusercontent.com/eysp/AutoBuild-OpenWrt/master/patches/Makefile
 
 # find target/linux/x86 -name "config*" -exec bash -c 'cat kernel.conf >> "{}"' \;
 
