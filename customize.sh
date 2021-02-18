@@ -9,6 +9,7 @@
 sed -i 's/192.168.1.1/192.168.123.1/g' openwrt/package/base-files/files/bin/config_generate
 #2.luci settings
 cd openwrt
+sed -i '/wrt350nv2-builder upslug2/a\tools-y += ucl upx' tools/Makefile
 git clone https://github.com/garypang13/openwrt-packages.git package/openwrt-packages
 rm -Rf package/openwrt-packages/default-settings
 rm -Rf package/openwrt-packages/luci-app-adguardhome
@@ -41,8 +42,7 @@ svn co https://github.com/lienol/openwrt/trunk/tools/ucl tools/ucl
 #rm -Rf tools/upx && svn co https://github.com/coolsnowwolf/lede/trunk/tools/upx tools/upx
 #rm -Rf tools/ucl && svn co https://github.com/coolsnowwolf/lede/trunk/tools/ucl tools/ucl
 #sed -i 's?zstd$?zstd ucl upx\n$(curdir)/upx/compile := $(curdir)/ucl/compile?g' tools/Makefile
-#sed -i '/wrt350nv2-builder upslug2/a\tools-y += ucl upx' tools/Makefile
-rm tools/Makefile && cd tools && wget -O https://raw.githubusercontent.com/Lienol/openwrt/19.07/tools/Makefile && cd ../
+#rm tools/Makefile && wget -P tools https://raw.githubusercontent.com/Lienol/openwrt/19.07/tools/Makefile
 
 # find target/linux/x86 -name "config*" -exec bash -c 'cat kernel.conf >> "{}"' \;
 
