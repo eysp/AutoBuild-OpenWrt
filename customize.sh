@@ -36,10 +36,10 @@ svn co https://github.com/immortalwrt/packages/trunk/utils/dockerd feeds/package
 svn co https://github.com/immortalwrt/packages/trunk/utils/libnetwork feeds/packages/utils/libnetwork
 svn co https://github.com/immortalwrt/packages/trunk/utils/runc feeds/packages/utils/runc
 svn co https://github.com/immortalwrt/packages/trunk/utils/tini feeds/packages/utils/tini
-rm -Rf tools/upx && svn co https://github.com/Lienol/openwrt/trunk/tools/upx tools/upx
-rm -Rf tools/ucl && svn co https://github.com/Lienol/openwrt/trunk/tools/ucl tools/ucl
-#rm -Rf tools/upx && svn co https://github.com/coolsnowwolf/lede/trunk/tools/upx tools/upx
-#rm -Rf tools/ucl && svn co https://github.com/coolsnowwolf/lede/trunk/tools/ucl tools/ucl
+#rm -Rf tools/upx && svn co https://github.com/Lienol/openwrt/trunk/tools/upx tools/upx
+#rm -Rf tools/ucl && svn co https://github.com/Lienol/openwrt/trunk/tools/ucl tools/ucl
+rm -Rf tools/upx && svn co https://github.com/coolsnowwolf/lede/trunk/tools/upx tools/upx
+rm -Rf tools/ucl && svn co https://github.com/coolsnowwolf/lede/trunk/tools/ucl tools/ucl
 #sed -i 's?zstd$?zstd ucl upx\n$(curdir)/upx/compile := $(curdir)/ucl/compile?g' tools/Makefile
 sed -i '/wrt350nv2-builder upslug2/a\tools-y += ucl upx' tools/Makefile
 
