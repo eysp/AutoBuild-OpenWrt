@@ -67,7 +67,6 @@ jobs:
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
-#        sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
         git clone https://github.com/tuanqing/install-program openwrt/package/install-program
         https://github.com/tuanqing/mknop
          
@@ -104,11 +103,10 @@ jobs:
         echo -e "$(nproc) thread build."
         make -j$(nproc) || make -j1 V=s
         
-      - name: Build firmware
-        run: |
+    - name: Build firmware
+      run: |
           cp openwrt/bin/targets/*/*/*.tar.gz ./mknop/openwrt
-          sudo ./mknop/gen_openwrt -d -k latest
-          
+          sudo ./mknop/gen_openwrt -d -k latest          
           devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
           cd mknop/out
           for x in ${devices[*]}; do
@@ -118,26 +116,26 @@ jobs:
             cd ../
             echo "firmware_$x=$filename" >> $GITHUB_ENV
           done
-      - name: Upload firmware @ phicomm n1
-        uses: actions/upload-artifact@main
-        with:
-          name: ${{ env.firmware_phicomm-n1 }}
-          path: mknop/out/phicomm-n1
+    - name: Upload firmware @ phicomm n1
+      uses: actions/upload-artifact@main
+      with:
+        name: ${{ env.firmware_phicomm-n1 }}
+        path: mknop/out/phicomm-n1
 
-      - name: Upload firmware @ rk3328 [ default beikeyun ]
-        uses: actions/upload-artifact@main
-        with:
-          name: ${{ env.firmware_rk3328 }}
-          path: mknop/out/rk3328
+    - name: Upload firmware @ rk3328 [ default beikeyun ]
+      uses: actions/upload-artifact@main
+      with:
+        name: ${{ env.firmware_rk3328 }}
+        path: mknop/out/rk3328
 
-      - name: Upload firmware @ s9xxx [ default octopus planet ]
-        uses: actions/upload-artifact@main
-        with:
-          name: ${{ env.firmware_s9xxx }}
-          path: mknop/out/s9xxx
+    - name: Upload firmware @ s9xxx [ default octopus planet ]
+      uses: actions/upload-artifact@main
+      with:
+        name: ${{ env.firmware_s9xxx }}
+        path: mknop/out/s9xxx
 
-      - name: Upload firmware @ vplus
-        uses: actions/upload-artifact@main
-        with:
-          name: ${{ env.firmware_vplus }}
-          path: out/vplus
+    - name: Upload firmware @ vplus
+      uses: actions/upload-artifact@main
+      with:
+        name: ${{ env.firmware_vplus }}
+        path: out/vplus
