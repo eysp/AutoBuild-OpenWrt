@@ -1,0 +1,143 @@
+#=================================================
+# Description: Build OpenWrt using GitHub Actions
+# Lisence: MIT
+# Author: ysp
+# Youtube Channel: https://goo.gl/fvkdwm 
+#=================================================
+
+name: Build_x86_64
+
+on: 
+  repository_dispatch:
+  workflow_dispatch:
+
+  #push:
+  #  branches: 
+  #    - master
+
+  #schedule:
+  #  - cron: 0 8 * * 5
+  
+  watch:
+    types: [started]
+
+env:
+  TZ: 'Asia/Shanghai'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Initialization environment
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        docker rmi `docker images -q`
+        echo "Deleting files, please wait ..."
+        sudo rm -rf \
+          /usr/share/dotnet \
+          /etc/mysql \
+          /etc/php
+        sudo -E apt-get -y purge \
+          azure-cli \
+          ghc* \
+          zulu* \
+          hhvm \
+          llvm* \
+          firefox \
+          google* \
+          dotnet* \
+          powershell \
+          openjdk* \
+          mysql* \
+          php*
+        sudo -E apt-get update
+        sudo -E apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev patch python3 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex node-uglify git gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx-ucl libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync
+        sudo -E apt-get -y autoremove --purge
+        sudo -E apt-get clean
+        sudo timedatectl set-timezone "$TZ"
+    - name: Clone source code
+      env: 
+        REPO_URL: https://github.com/openwrt/openwrt
+        REPO_BRANCH: openwrt-19.07
+      run: |
+        git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+        cd openwrt
+#        sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
+        git clone https://github.com/tuanqing/install-program openwrt/package/install-program
+        https://github.com/tuanqing/mknop
+         
+#    - name: Update & Install feeds
+#      working-directory: ./openwrt
+#      run: |
+#        ./scripts/feeds update -a
+#        ./scripts/feeds install -a
+#        ./scripts/feeds install -a
+
+    #- name: Import external feeds
+    #  working-directory: ./openwrt
+    #  run: |
+    #    git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
+    #    git clone "your_github_link" package/"your_folder_name"      
+
+    - name: Configuration Customization - Build_n1
+      env:
+        CONFIG_FILE: 'n1.config'
+      run: |
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        chmod +x ./customize.sh && ./customize.sh
+        cd openwrt && make defconfig
+        
+    - name: Download package
+      working-directory: ./openwrt
+      run: |
+        make download -j$(nproc) V=s
+        find dl -size -1024c -exec ls -l {} \;
+        find dl -size -1024c -exec rm -f {} \;
+    - name: Build firmware
+      working-directory: ./openwrt
+      run: |
+        echo -e "$(nproc) thread build."
+        make -j$(nproc) || make -j1 V=s
+        
+      - name: Build firmware
+        run: |
+          cp openwrt/bin/targets/*/*/*.tar.gz ./mknop/openwrt
+          sudo ./mknop/gen_openwrt -d -k latest
+          
+          devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
+          cd mknop/out
+          for x in ${devices[*]}; do
+            cd $x
+            filename=$(ls | awk -F '.img' '{print $1}')
+            gzip *.img
+            cd ../
+            echo "firmware_$x=$filename" >> $GITHUB_ENV
+          done
+      - name: Upload firmware @ phicomm n1
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ env.firmware_phicomm-n1 }}
+          path: mknop/out/phicomm-n1
+
+      - name: Upload firmware @ rk3328 [ default beikeyun ]
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ env.firmware_rk3328 }}
+          path: mknop/out/rk3328
+
+      - name: Upload firmware @ s9xxx [ default octopus planet ]
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ env.firmware_s9xxx }}
+          path: mknop/out/s9xxx
+
+      - name: Upload firmware @ vplus
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ env.firmware_vplus }}
+          path: out/vplus
