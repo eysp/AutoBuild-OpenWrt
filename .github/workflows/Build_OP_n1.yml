@@ -88,6 +88,7 @@ jobs:
         CONFIG_FILE: 'n1.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        sed -i '/default-settings/d' ./customize.sh
         chmod +x ./customize.sh && ./customize.sh
         rm -rf openwrt/package/openwrt-packages/rtl88x2bu
         rm -f openwrt/package/default-settings/i18n/dockerman.zh-cn.po
