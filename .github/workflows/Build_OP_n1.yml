@@ -90,7 +90,14 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./customize.sh && ./customize.sh
         rm -rf openwrt/package/openwrt-packages/rtl88x2bu
-        rm -rf openwrt/package/openwrt-packages/luci-app-passwall
+        rm openwrt/package/default-settings/i18n/dockerman.zh-cn.po
+        rm openwrt/package/default-settings/i18n/eqos.zh-cn.po
+        rm openwrt/package/default-settings/i18n/frp.zh-cn.po
+        rm openwrt/package/default-settings/i18n/mwan3helper.zh-cn.po
+        rm openwrt/package/default-settings/i18n/terminal.zh-cn.po
+        rm openwrt/package/default-settings/i18n/usb-printer.zh-cn.po
+        rm openwrt/package/default-settings/i18n/verysync.zh-cn.po
+        rm openwrt/package/default-settings/i18n/vlmcsd.zh-cn.po
         cd openwrt && make defconfig
         
     - name: Download package
