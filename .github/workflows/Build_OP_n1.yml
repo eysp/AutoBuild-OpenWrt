@@ -66,9 +66,9 @@ jobs:
         REPO_BRANCH: openwrt-19.07
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+        git clone https://github.com/tuanqing/mknop       
         cd openwrt
-        git clone https://github.com/tuanqing/mknop
-        git clone https://github.com/tuanqing/install-program openwrt/package/install-program
+        git clone https://github.com/tuanqing/install-program package/install-program
  
 #    - name: Update & Install feeds
 #      working-directory: ./openwrt
