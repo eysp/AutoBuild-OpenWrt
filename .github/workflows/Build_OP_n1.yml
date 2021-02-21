@@ -89,6 +89,7 @@ jobs:
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./customize.sh && ./customize.sh
+        rm -rf openwrt/package/openwrt-packages/rtl88x2bu
         cd openwrt && make defconfig
         
     - name: Download package
