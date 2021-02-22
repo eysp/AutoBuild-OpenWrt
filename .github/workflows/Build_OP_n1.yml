@@ -115,10 +115,10 @@ jobs:
         
     - name: Build N1 firmware
       run: |
-          cp openwrt/bin/targets/*/*/*.tar.gz ./mknop/openwrt
-          sudo ./mknop/gen_openwrt -d -k latest          
+          cp openwrt/bin/targets/*/*/*.img.gz ./mknop/openwrt
+          cd ./mknop && sudo ./gen_openwrt -d -k latest          
           devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
-          cd mknop/out
+          cd out
           for x in ${devices[*]}; do
             cd $x
             filename=$(ls | awk -F '.img' '{print $1}')
