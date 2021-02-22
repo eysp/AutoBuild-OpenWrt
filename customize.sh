@@ -17,6 +17,7 @@ rm -Rf package/openwrt-packages/luci-app-openclash
 rm -Rf package/openwrt-packages/compressed-memory
 rm -Rf package/openwrt-packages/luci-app-compressed-memory
 rm -Rf package/openwrt-packages/luci-app-qosv4
+rm -Rf package/openwrt-packages/rtl88x2bu
 git clone https://github.com/eysp/default-settings package/default-settings
 git clone https://github.com/lloyd18/luci-app-npc package/openwrt-packages/luci-app-npc
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/openwrt-packages/luci-app-adguardhome
