@@ -83,9 +83,9 @@ jobs:
     #    git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
     #    git clone "your_github_link" package/"your_folder_name"      
 
-    - name: Configuration Customization - Build_n1
+    - name: Configuration Customization - Build_phicomm_n1
       env:
-        CONFIG_FILE: 'n1.config'
+        CONFIG_FILE: 'phicomm.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         sed -i '/default-settings/d' ./customize.sh
