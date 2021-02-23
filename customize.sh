@@ -50,6 +50,5 @@ rm tools/Makefile && wget -P tools https://raw.githubusercontent.com/eysp/AutoBu
 sed -i 's/max_requests 3/max_requests 20/g' package/network/services/uhttpd/files/uhttpd.config
 rm -rf ./feeds/packages/lang/golang
 svn co https://github.com/immortalwrt/packages/trunk/lang/golang feeds/packages/lang/golang
-sed -i 's/default y/default n/g' package/openwrt-packages/v2ray-plugin/Makefile
 ./scripts/feeds update -a && ./scripts/feeds install -a
 cd ../
