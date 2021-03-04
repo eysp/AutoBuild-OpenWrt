@@ -23,6 +23,8 @@ git clone https://github.com/eysp/default-settings package/default-settings
 git clone https://github.com/lloyd18/luci-app-npc package/openwrt-packages/luci-app-npc
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/openwrt-packages/luci-app-adguardhome
 svn co https://github.com/liuran001/openwrt-packages/trunk/wrtbwmon package/openwrt-packages/wrtbwmon
+svn co https://github.com/linkease/ddnsto-openwrt/trunk/ddnsto package/network/services/ddnsto
+svn co https://github.com/linkease/ddnsto-openwrt/trunk/luci-app-ddnsto package/luci-app-ddnsto
 
 ./scripts/feeds update -a && ./scripts/feeds install -a
 
