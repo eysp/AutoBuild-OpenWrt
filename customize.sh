@@ -20,6 +20,15 @@ rm -Rf package/openwrt-packages/luci-app-qosv4
 rm -Rf package/openwrt-packages/rtl88x2bu
 rm -Rf feeds/packages/net/kcptun
 git clone https://github.com/eysp/default-settings package/default-settings
+rm -rf openwrt/package/openwrt-packages/rtl88x2bu
+rm -f openwrt/package/default-settings/i18n/dockerman.zh-cn.po
+rm -f openwrt/package/default-settings/i18n/eqos.zh-cn.po
+rm -f openwrt/package/default-settings/i18n/frp.zh-cn.po
+rm -f openwrt/package/default-settings/i18n/mwan3helper.zh-cn.po
+rm -f openwrt/package/default-settings/i18n/terminal.zh-cn.po
+rm -f openwrt/package/default-settings/i18n/usb-printer.zh-cn.po
+rm -f openwrt/package/default-settings/i18n/verysync.zh-cn.po
+rm -f openwrt/package/default-settings/i18n/vlmcsd.zh-cn.po
 git clone https://github.com/lloyd18/luci-app-npc package/openwrt-packages/luci-app-npc
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/openwrt-packages/luci-app-adguardhome
 svn co https://github.com/liuran001/openwrt-packages/trunk/wrtbwmon package/openwrt-packages/wrtbwmon
