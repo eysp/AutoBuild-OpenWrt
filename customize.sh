@@ -34,6 +34,7 @@ git clone https://github.com/rufengsuixing/luci-app-adguardhome package/openwrt-
 svn co https://github.com/liuran001/openwrt-packages/trunk/wrtbwmon package/openwrt-packages/wrtbwmon
 svn co https://github.com/linkease/ddnsto-openwrt/trunk/ddnsto package/network/services/ddnsto
 svn co https://github.com/linkease/ddnsto-openwrt/trunk/luci-app-ddnsto package/luci-app-ddnsto
+svn co https://github.com/openwrt/packages/trunk/lang/python/python-psutil feeds/packages/lang/python/python-psutil
 
 ./scripts/feeds update -a && ./scripts/feeds install -a
 
