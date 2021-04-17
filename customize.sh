@@ -19,6 +19,8 @@ rm -Rf package/openwrt-packages/luci-app-compressed-memory
 rm -Rf package/openwrt-packages/luci-app-qosv4
 rm -Rf package/openwrt-packages/rtl88x2bu
 rm -Rf feeds/packages/net/kcptun
+rm -rf package/openwrt-packages/automount
+rm -rf package/openwrt-packages/wrtbwmon
 git clone https://github.com/eysp/default-settings package/default-settings
 rm -rf openwrt/package/openwrt-packages/rtl88x2bu
 rm -f openwrt/package/default-settings/i18n/dockerman.zh-cn.po
@@ -36,6 +38,7 @@ svn co https://github.com/liuran001/openwrt-packages/trunk/wrtbwmon package/open
 svn co https://github.com/linkease/ddnsto-openwrt/trunk/ddnsto package/network/services/ddnsto
 svn co https://github.com/linkease/ddnsto-openwrt/trunk/luci-app-ddnsto package/luci-app-ddnsto
 svn co https://github.com/openwrt/packages/trunk/lang/python/python-psutil feeds/packages/lang/python/python-psutil
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-19.07/package/lean/automount package/openwrt-packages/automount
 
 ./scripts/feeds update -a && ./scripts/feeds install -a
 
